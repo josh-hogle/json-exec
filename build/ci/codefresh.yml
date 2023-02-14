@@ -1,0 +1,42 @@
+version: "1.0"
+
+stages:
+  - clone
+  - build
+  - release
+
+steps:
+  clone:
+    type: git-clone
+    stage: clone
+    title: Cloning repository
+    repo: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    revision: ${{CF_BRANCH}}
+
+  build:
+    stage: build
+    title: Building Go binaries
+    image: golang:1.16
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+      - DIST_DIR=/codefresh/volume/dist
+    working_directory: ${{clone}}
+    shell: bash
+    commands:
+      - export VERSION=$(echo ${{CF_BRANCH}} | cut -c2-)
+      - apt update
+      - apt install -y zip
+      - make clean all
+      - cf_export VERSION
+
+  release:
+    type: github-release
+    stage: release
+    title: Creating GitHub release
+    arguments:
+      release_name: ${{CF_BRANCH}}
+      release_tag: ${{CF_BRANCH}}
+      files:
+        - /codefresh/volume/dist/json-exec-${{VERSION}}-linux_amd64.tar.gz
+        - /codefresh/volume/dist/json-exec-${{VERSION}}-darwin_amd64.tar.gz
+        - /codefresh/volume/dist/json-exec-${{VERSION}}-windows_amd64.zip
