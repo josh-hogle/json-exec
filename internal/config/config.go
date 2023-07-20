@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/josh-hogle/zerolog/v2/log"
 	"github.com/spf13/viper"
+	"go.innotegrity.dev/zerolog/log"
 	"gopkg.in/yaml.v3"
 )
 

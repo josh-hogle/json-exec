@@ -1,6 +1,6 @@
 package config
 
-import "github.com/josh-hogle/zerolog/v2"
+import "go.innotegrity.dev/zerolog"
 
 const (
 	// DefaultConfigFolder is the name of the config folder in the user's home directory.

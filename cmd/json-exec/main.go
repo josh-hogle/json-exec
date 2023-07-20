@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/josh-hogle/json-exec/internal/cli"
-	"github.com/josh-hogle/zerolog/v2"
-	"github.com/josh-hogle/zerolog/v2/log"
+	"go.innotegrity.dev/zerolog"
+	"go.innotegrity.dev/zerolog/log"
 )
 
 func main() {

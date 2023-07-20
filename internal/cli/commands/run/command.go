@@ -9,8 +9,8 @@ import (
 	"github.com/josh-hogle/json-exec/internal/app"
 	"github.com/josh-hogle/json-exec/internal/config"
 	"github.com/josh-hogle/json-exec/internal/errors"
-	"github.com/josh-hogle/zerolog/v2/log"
 	"github.com/spf13/cobra"
+	"go.innotegrity.dev/zerolog/log"
 )
 
 // Command is the object for executing the actual command

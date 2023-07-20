@@ -3,7 +3,7 @@ package config
 import (
 	"strings"
 
-	"github.com/josh-hogle/zerolog/v2/log"
+	"go.innotegrity.dev/zerolog/log"
 )
 
 // defaultLogWriter is just a wrapper so we can catch any messages from internal libraries that use the
